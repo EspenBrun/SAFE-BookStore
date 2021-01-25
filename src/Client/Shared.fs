@@ -7,6 +7,7 @@ type PageModel =
     | LoginModel of Login.Model
     | NotFoundModel
     | WishListModel of WishList.Model
+    | TomatoModel
 
 type Model = {
     MenuModel : Menu.Model
@@ -46,5 +47,7 @@ let view model dispatch =
                 yield Login.view { Model = m; Dispatch = (LoginMsg >> dispatch) }
             | WishListModel m ->
                 yield WishList.view { Model = m; Dispatch = (WishListMsg >> dispatch) }
+            | TomatoModel ->
+                yield div [] [ str "I like tomatoes" ]
         ]
     ]

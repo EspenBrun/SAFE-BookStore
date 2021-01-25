@@ -9,6 +9,7 @@ type Page =
     | NotFound
     | Login
     | WishList
+    | Tomato
 
 let toPath =
     function
@@ -16,6 +17,7 @@ let toPath =
     | Page.Login -> "/login"
     | Page.NotFound -> "/notfound"
     | Page.WishList -> "/wishlist"
+    | Page.Tomato -> "/tomato"
 
 /// The URL is turned into a Result.
 let pageParser : Parser<Page -> Page,_> =
@@ -23,6 +25,7 @@ let pageParser : Parser<Page -> Page,_> =
         [ map Page.Home (s "")
           map Page.Login (s "login")
           map Page.NotFound (s "notfound")
-          map Page.WishList (s "wishlist") ]
+          map Page.WishList (s "wishlist")
+          map Page.Tomato (s "tomato" ) ]
 
 let urlParser location = parsePath pageParser location

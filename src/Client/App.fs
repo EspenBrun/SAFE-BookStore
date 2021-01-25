@@ -41,6 +41,9 @@ let urlUpdate (result:Page option) (model:Model) =
     | Some Page.Home ->
         let subModel, cmd = Home.init()
         { model with PageModel = HomePageModel subModel }, Cmd.map HomePageMsg cmd
+    
+    | Some Page.Tomato ->
+        { model with PageModel = TomatoModel }, Cmd.none
 
 
 let loadUser () : UserData option =
@@ -60,6 +63,8 @@ let hydrateModel (json:string) (page: Page) =
     | Page.Login, LoginModel _ ->
         Some model
     | Page.WishList, WishListModel _ ->
+        Some model
+    | Page.Tomato, TomatoModel _ ->
         Some model
     | _ ->
         None
