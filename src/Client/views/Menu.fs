@@ -19,6 +19,7 @@ type Props = {
 let view = elmishView "Menu" (fun (props:Props) ->
     div [ centerStyle "row" ] [
         yield viewLink Page.Home "Home"
+        yield viewLink Page.Tomato "Tomato"
         match props.Model.User with
         | Some _ ->
             yield viewLink Page.WishList "Wishlist"
