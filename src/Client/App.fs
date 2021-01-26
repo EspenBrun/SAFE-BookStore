@@ -65,7 +65,7 @@ let hydrateModel (json:string) (page: Page) =
         Some model
     | Page.WishList, WishListModel _ ->
         Some model
-    | Page.Tomato, TomatoModel _ ->
+    | _, TomatoModel _ ->
         Some model
     | _ ->
         None
@@ -149,6 +149,11 @@ let update msg model =
 
     | Logout(), _ ->
         model, Cmd.OfFunc.either LocalStorage.delete "user" (fun _ -> LoggedOut) StorageFailure
+
+    | TomatoMsg msg, TomatoModel tm ->
+        let color = match msg with Tomato.Msg.ChangeColor c -> c
+        let tm = { tm with Color = color }
+        { model with PageModel = TomatoModel tm }, Cmd.none
 
 
 open Elmish.Debug

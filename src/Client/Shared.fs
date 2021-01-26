@@ -24,6 +24,7 @@ type Msg =
     | LoggedOut
     | StorageFailure of exn
     | Logout of unit
+    | TomatoMsg of Tomato.Msg
 
 
 // VIEW
@@ -48,6 +49,6 @@ let view model dispatch =
             | WishListModel m ->
                 yield WishList.view { Model = m; Dispatch = (WishListMsg >> dispatch) }
             | TomatoModel m ->
-                yield Tomato.view m
+                yield Tomato.view m (TomatoMsg >> dispatch )
         ]
     ]
