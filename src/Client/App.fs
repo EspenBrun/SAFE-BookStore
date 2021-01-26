@@ -2,7 +2,7 @@ module Client.App
 
 open Fable.Core.JsInterop
 open Fable.Import
-    open Elmish
+open Elmish
 open Elmish.React
 open Elmish.HMR
 open Client.Shared
@@ -43,7 +43,8 @@ let urlUpdate (result:Page option) (model:Model) =
         { model with PageModel = HomePageModel subModel }, Cmd.map HomePageMsg cmd
     
     | Some Page.Tomato ->
-        { model with PageModel = TomatoModel }, Cmd.none
+        let m = Tomato.init()
+        { model with PageModel = TomatoModel m }, Cmd.none
 
 
 let loadUser () : UserData option =

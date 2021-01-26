@@ -25,6 +25,7 @@
     <Compile Include="../Client/pages/NewBook.fs" />
     <Compile Include="../Client/pages/WishList.fs" />
     <Compile Include="../Client/pages/Login.fs" />
+    <Compile Include="../Client/pages/Tomato.fs" />
     <Compile Include="../Client/Shared.fs" />
     <Compile Include="Templates.fs" />
     <Compile Include="Pages.fs" />
